@@ -12,7 +12,9 @@ import org.pursuit.unit_03_assessment.R;
 
 public class DisplayActivity extends AppCompatActivity {
 
-
+    /**
+     * these can be made into local variables since theres not method other than the oncreate thats using these textviews
+     */
     private TextView planet_name;
     private TextView planet_number;
     private ImageView planet_image;
@@ -29,6 +31,9 @@ public class DisplayActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         planet_name.setText(intent.getStringExtra("name"));
+        /**
+         * this should be integer.valueOf() to convert a number to a string
+         */
         planet_number.setText(Integer.toString(intent.getIntExtra("number",0)));
         Picasso.get().load(intent.getStringExtra("image")).into(planet_image);
 

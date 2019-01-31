@@ -4,6 +4,9 @@ import java.util.List;
 
 public class PlanetList {
 
+    /**
+     * this field should be named planets because it needs to match the
+     */
     List<Planet> planetsList = null;
 
     public List<Planet> getPlanetsList() {

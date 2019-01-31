@@ -41,19 +41,17 @@ public class RecyclerActivity extends AppCompatActivity {
         planetListCall.enqueue(new Callback<PlanetList>() {
             @Override
             public void onResponse(Call<PlanetList> call, Response<PlanetList> response) {
-//
-//                Log.d(TAG,"onResponse: " + response.body().getPlanetsList());
-//                recyclerView.setAdapter(new AdapterClass(response
-//                        .body()
-//                        .getPlanetsList()));
-//                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-
+                /**
+                 * check if response.body() is null otherwise your app will crash if the network call is successful but the response is null
+                 */
+                Log.d(TAG,"onResponse: " + response.body().getPlanetsList());
+                recyclerView.setAdapter(new AdapterClass(response.body().getPlanetsList()));
+                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
             }
 
             @Override
             public void onFailure(Call<PlanetList> call, Throwable t) {
                 Log.d(TAG,"onFailure: " + t.toString());
-
             }
         });
 

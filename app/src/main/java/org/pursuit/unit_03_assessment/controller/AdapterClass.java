@@ -6,12 +6,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.pursuit.unit_03_assessment.R;
 import org.pursuit.unit_03_assessment.model.Planet;
 import org.pursuit.unit_03_assessment.view.ViewHolderClass;
 
 import java.util.List;
 
 public class AdapterClass extends RecyclerView.Adapter<ViewHolderClass> {
+
+    /**
+     * this field can be made private
+     */
     List<Planet> planetList;
 
     public AdapterClass (List<Planet> planetList){
@@ -21,6 +26,9 @@ public class AdapterClass extends RecyclerView.Adapter<ViewHolderClass> {
     @NonNull
     @Override
     public ViewHolderClass onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        /**
+         * this childview should be inflating its own layout instead of activity_display
+         */
         View childView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_display,viewGroup,false);
         return new ViewHolderClass(childView);
     }

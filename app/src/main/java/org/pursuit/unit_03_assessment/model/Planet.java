@@ -1,5 +1,9 @@
 package org.pursuit.unit_03_assessment.model;
 
+/**
+ * remove unused imports
+ */
+
 import java.util.List;
 
 public class Planet {

@@ -50,7 +50,11 @@ public class LoginActivity extends AppCompatActivity {
 
          sharedPreferences = getSharedPreferences(KEY,MODE_PRIVATE);
 
-
+        /**
+         * you should be checking if there is a username and checkbox value stored in shared prefs
+         *
+         * right now your only checking if these two field variables are null/ or not checked and theyll always start off false and null
+         */
         if (emailEditText !=null && !isChecked){
             emailView.setText(sharedPreferences.getString(KEY,""));
             usernameCheckbox.setChecked(sharedPreferences.getBoolean(KEY,false));
@@ -97,20 +101,32 @@ public class LoginActivity extends AppCompatActivity {
             cancel = true;
         } else {
 
+            /**
+             * use .equals() not == when comparing two strings this wouldnt work
+             */
             if (email== getString(R.string.dummy_username) && password == getString(R.string.dummy_password)){
                  mmatches = true;
                 isChecked = usernameCheckbox.isChecked();
-
             }
-
+            /**
+             *  you are setting matches to equal true in this if check
+             *
+             *  and you wouldnt need to write matches == true to check if the variable is true
+             *  you can simplify this to if(matches && !isChecked)
+             */
             if (mmatches = true && !isChecked){
                 sharedPreferences.edit().putBoolean(KEY,isChecked).apply();
             } else {
                 getSharedPreferences(KEY,MODE_PRIVATE).edit().clear().apply();
 
-
             }
-
+            /**
+             * this can also be simlpified
+             *
+             * if(matches) checks if matches is true
+             *
+             *
+             */
             if (mmatches ==true){
                 Intent intent = new Intent(this,RecyclerActivity.class);
                 startActivity(intent);
